@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4935011041237213416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338422772211043667}
+  - component: {fileID: 3715955063199364244}
+  m_Layer: 0
+  m_Name: room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1338422772211043667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935011041237213416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3715955063199364244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935011041237213416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4af10d2370894df88637c604e9ffc88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomAuthor: Eleanor
+  designedRoomFile: {fileID: 4900000, guid: df8fe0cc84b674a6f8aa2c00220f0fd9, type: 3}
+  localTilePrefabs:
+  - {fileID: 7299188409798205304, guid: 4c09dd8366bb34a01abb4cdc770d03cc, type: 3}
+  roomGridX: 0
+  roomGridY: 0
+  LabeledRooms:
+  - {fileID: 1885809616068062221, guid: f1740eb69f63e428eb5aaed2694b9481, type: 3}
+  - {fileID: 1885809616068062221, guid: 1b9b87caf0e454f859fcdea44a0b4595, type: 3}
+  - {fileID: 1885809616068062221, guid: 950e8e442a02d4ab2863705abeaf85e7, type: 3}
+  - {fileID: 1885809616068062221, guid: 9532ad4fe5e2a47318c23344ff94004d, type: 3}
+  - {fileID: 1885809616068062221, guid: 467daa6f5795e493e80497bd6d7e4885, type: 3}
+  - {fileID: 1885809616068062221, guid: 8670de9c3d98446c18e224198eb06385, type: 3}
+  - {fileID: 1885809616068062221, guid: a859d6a69e7be4694802f2775e54c6cb, type: 3}
+  - {fileID: 1885809616068062221, guid: 5bf153f292fbf490c962c5ad88c070d1, type: 3}
+  - {fileID: 1885809616068062221, guid: 19294052ae82b4d008dda7b38fd2670c, type: 3}
+  - {fileID: 1885809616068062221, guid: 63adbc4eeb3054289b5cf97225697ebd, type: 3}

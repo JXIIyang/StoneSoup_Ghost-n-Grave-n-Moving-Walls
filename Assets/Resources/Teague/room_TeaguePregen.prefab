@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7122425975987190623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4370390068980528365}
+  - component: {fileID: 1942615780806897408}
+  m_Layer: 0
+  m_Name: room_TeaguePregen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4370390068980528365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122425975987190623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1942615780806897408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122425975987190623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe51d238a5940b4da6f871ada410c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomAuthor: Teague
+  designedRoomFile: {fileID: 0}
+  localTilePrefabs: []
+  roomGridX: 0
+  roomGridY: 0
+  preLabeledRooms:
+  - {fileID: 9137228573372720188, guid: a07cba1a6ad191243977b7f63d0104db, type: 3}
+  - {fileID: 454180741057268850, guid: 06aaa1c5cf776ef4e8278d505eb61c23, type: 3}
+  - {fileID: 454180741057268850, guid: 8866f05761e5dc24690cb431a3c540dc, type: 3}
+  - {fileID: 454180741057268850, guid: fd7db29ea534ac740b265c638e06dd34, type: 3}
+  - {fileID: 454180741057268850, guid: 70a4ae6f6c5d62e44a6a21f686c1232e, type: 3}
+  - {fileID: 454180741057268850, guid: 82d62a5ffa3f2894fb11081019006390, type: 3}
+  - {fileID: 454180741057268850, guid: a2de258759e234c489dc20c924e3f1f6, type: 3}
+  - {fileID: 454180741057268850, guid: 46bcfd47fd41cc24f945d4ad41ca7aec, type: 3}

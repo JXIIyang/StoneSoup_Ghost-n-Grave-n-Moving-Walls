@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4734079209130115121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8784912841046990452}
+  - component: {fileID: 7973007214738921724}
+  m_Layer: 0
+  m_Name: UtiCemetery1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8784912841046990452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734079209130115121}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.798887, y: 17.33186, z: -0.96875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7973007214738921724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734079209130115121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443e5f87f8e514d6b9b4ac772b5008a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomAuthor: Uti
+  designedRoomFile: {fileID: 4900000, guid: 94054fdc2079f9a439cd91cfd2c63f7c, type: 3}
+  localTilePrefabs:
+  - {fileID: 6210180252929177756, guid: e4afea910b03a0048ae5d7fc5aafc14f, type: 3}
+  - {fileID: 7379108856010312299, guid: ecac0a8d0dd74d145900c8263b566145, type: 3}
+  roomGridX: 0
+  roomGridY: 0
+  hasUpExit: 1
+  hasRightExit: 1
+  hasDownExit: 1
+  hasLeftExit: 1
+  hasUpRightPath: 1
+  hasUpDownPath: 1
+  hasUpLeftPath: 1
+  hasRightDownPath: 1
+  hasRightLeftPath: 1
+  hasDownLeftPath: 1

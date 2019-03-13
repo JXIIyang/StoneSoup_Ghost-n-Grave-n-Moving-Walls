@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 99589aa631e4c904f819a4a0e14c0dbd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - deathEffect: {instanceID: 0}
+  - deathSFX: {instanceID: 0}
+  - tileWereHolding: {instanceID: 0}
+  - wolfFamiliar: {fileID: 317676562703765549, guid: 39db720b24157d2489576766e777855c,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

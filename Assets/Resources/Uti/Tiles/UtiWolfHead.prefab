@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5237947047698512921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4766562736445166289}
+  - component: {fileID: 4501921462138010261}
+  - component: {fileID: 7009673616111631010}
+  - component: {fileID: 3018916301977782906}
+  m_Layer: 0
+  m_Name: UtiWolfHead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4766562736445166289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5237947047698512921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4501921462138010261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5237947047698512921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99589aa631e4c904f819a4a0e14c0dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: 2
+  tileName: Wolf Head
+  health: 1
+  deathEffect: {fileID: 0}
+  deathSFX: {fileID: 0}
+  heldOffset: {x: 0, y: 0.4}
+  heldAngle: 0
+  tileWereHolding: {fileID: 0}
+  aimDirection: {x: 0, y: 0}
+  sounds:
+  - {fileID: 8300000, guid: fb49100e6366d5645800bd19d77ceda9, type: 3}
+  - {fileID: 8300000, guid: bd4d2a44b2d61b947bc9777ae20919b3, type: 3}
+  - {fileID: 8300000, guid: d60cc520a52c31f4eaaeb77ee29a30f4, type: 3}
+  - {fileID: 8300000, guid: 752b2bd5f9d2e6c43a59e8ad96788db7, type: 3}
+  - {fileID: 8300000, guid: 26b72226ab3fdac4aab6d23b2541d3e5, type: 3}
+  - {fileID: 8300000, guid: e5257ade566f473458415af500d89e3d, type: 3}
+  - {fileID: 8300000, guid: 76ffbd493f372224283358d4002de4f1, type: 3}
+  - {fileID: 8300000, guid: 3cbc31448a4c01c4ba459412823ac3d7, type: 3}
+  - {fileID: 8300000, guid: afa01f7396c53364f9ad01a84e01aa84, type: 3}
+  - {fileID: 8300000, guid: 0bccb7627e906554f8ecc392b5bd43dc, type: 3}
+  - {fileID: 8300000, guid: 81f5a8ce09ca4a04ebb63b371ea41281, type: 3}
+  - {fileID: 8300000, guid: fe23e1feb17ea5e459b7f3218c67841e, type: 3}
+  - {fileID: 8300000, guid: 106956ccfd8081c4d9808628f10462d5, type: 3}
+  - {fileID: 8300000, guid: 197733ca01b63dd43ade7c4de49d51f6, type: 3}
+  - {fileID: 8300000, guid: 66623a9befb798147aaab528ebc48d05, type: 3}
+  - {fileID: 8300000, guid: 81f5a8ce09ca4a04ebb63b371ea41281, type: 3}
+  - {fileID: 8300000, guid: 5b2368c01ddaf264ab08399f31431840, type: 3}
+  - {fileID: 8300000, guid: 1dd96f94932549e499271fc62eedd7e6, type: 3}
+  - {fileID: 8300000, guid: d95e62326e4924f41846998a1e39259a, type: 3}
+  - {fileID: 8300000, guid: e6c5e88235cfc134f881910b67540487, type: 3}
+  - {fileID: 8300000, guid: 4d19a5bed6ffab544af233a8762214f6, type: 3}
+  - {fileID: 8300000, guid: 8021be7f11f6b384e88e3658d3e1ea1a, type: 3}
+  - {fileID: 8300000, guid: 147908620256e06478f86981f84966cc, type: 3}
+  - {fileID: 8300000, guid: 0b1874a25fbda9745b41872c62c586b2, type: 3}
+  - {fileID: 8300000, guid: 7603f6bc675f7504d91e159ef60009be, type: 3}
+  - {fileID: 8300000, guid: 6de8834d607ffb5419879c1aed2a6dce, type: 3}
+  wolfFamiliar: {fileID: 317676562703765549, guid: 39db720b24157d2489576766e777855c,
+    type: 3}
+  shaders:
+  - {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  - {fileID: 4800000, guid: 273404942eede4ea1883ca1fb2942507, type: 3}
+  - {fileID: 4800000, guid: 003377fc2620a44939dadde6fe3f8190, type: 3}
+  - {fileID: 4800000, guid: daf9781cad112c75d0008dfa8d76c639, type: 3}
+  - {fileID: 4800000, guid: 85a88efa8c871af4a9d17c64791b6f4f, type: 3}
+  - {fileID: 4800000, guid: f1b13d7a80660504a858ea24cfa418c6, type: 3}
+  - {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
+  - {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
+  - {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  - {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee, type: 3}
+  texture2D: {fileID: 2800000, guid: 31f5a8611c4ed1245b18456206e798dc, type: 3}
+  drums: {fileID: 8300000, guid: 123bf5d1ec45f1b49b70670e9e19a662, type: 3}
+  ghost: {fileID: 4990657727411839205, guid: 178261bb6137f7e42951237f68ac8a92, type: 3}
+--- !u!212 &7009673616111631010
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5237947047698512921}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: d3384b6590934944db9f4e737b2f2276, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.32, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!61 &3018916301977782906
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5237947047698512921}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0

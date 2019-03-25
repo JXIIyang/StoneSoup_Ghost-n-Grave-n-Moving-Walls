@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfad4a053e52543bfa67a8d919fa3df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 0
+  tags: 1
   tileName: Faith Pad
   health: 50
   deathEffect: {fileID: 0}

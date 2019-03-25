@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 7737097930970754432}
   - component: {fileID: 1956004839988704177}
   - component: {fileID: 8375944634347696558}
+  - component: {fileID: 6685852487021415229}
   m_Layer: 0
   m_Name: EleanorLaser_H
   m_TagString: Untagged
@@ -175,8 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags: 0
   tileName: Laser
-  health: 999
-  deathEffect: {fileID: 0}
+  health: 1
+  deathEffect: {fileID: 1028137201516130, guid: c6956d67d496541a48fe508b48f70f4b,
+    type: 3}
   deathSFX: {fileID: 0}
   heldOffset: {x: 0.2, y: -0.1}
   heldAngle: 0
@@ -209,5 +211,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 4}
+  m_Size: {x: 0.5, y: 4}
   m_EdgeRadius: 0
+--- !u!50 &6685852487021415229
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203383385541394865}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

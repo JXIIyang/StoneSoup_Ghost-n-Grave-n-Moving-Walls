@@ -81,4 +81,11 @@ public class ChloeJuzWeihander : Tile
 			}
 		}
 	}
+
+	void OnColliderEnter2D(Collider2D other) {
+		if (other.gameObject.GetComponent<Tile>() != null) {
+			Tile otherTile = other.gameObject.GetComponent<Tile>();
+
+		}
+	}
 }

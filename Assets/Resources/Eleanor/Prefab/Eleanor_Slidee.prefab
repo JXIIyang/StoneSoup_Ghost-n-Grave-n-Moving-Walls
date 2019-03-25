@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 91419709165441046}
   - component: {fileID: 4590865892873687843}
   - component: {fileID: 585108018}
+  - component: {fileID: 200143625551121151}
   m_Layer: 0
   m_Name: Eleanor_Slidee
   m_TagString: Untagged
@@ -230,9 +231,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2480404052953679891}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a27d9da7e45a24e33b088deaba866c90, type: 2}
+  m_Controller: {fileID: 9100000, guid: 606e4220690d146b081e461e090e8b7a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -241,3 +242,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &200143625551121151
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480404052953679891}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8904899809724068046}
   - component: {fileID: 4060994403462067257}
   - component: {fileID: 3433633118945238139}
+  - component: {fileID: 5962376864458455901}
   m_Layer: 0
   m_Name: ChloeJuzweihander
   m_TagString: Untagged
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c29085d6aa13e49a4ce4b1c43f6a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 66
+  tags: 64
   tileName: Zweihander
   health: 1
   deathEffect: {fileID: 0}
@@ -186,3 +187,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &5962376864458455901
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904899809724068044}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1201919, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.2}
+    newSize: {x: 0.4, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.15961617, y: 0.2}
+  m_EdgeRadius: 0

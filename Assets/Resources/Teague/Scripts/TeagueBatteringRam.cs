@@ -26,7 +26,7 @@ public class TeagueBatteringRam : Tile
                     }
                     i++;
                 }
-                if (affectedTile && Vector2.Distance(affectedTile.transform.position, tileUsingUs.transform.position) <= 100)
+                if (affectedTile && Vector2.Distance(affectedTile.transform.position, tileUsingUs.transform.position) <= 25)
                 {
                     if (affectedTile.gameObject.GetComponent<Rigidbody2D>() == null)
                     {

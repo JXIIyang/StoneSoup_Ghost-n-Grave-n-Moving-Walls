@@ -74,28 +74,14 @@ public class EleanorLaser : Tile
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+//        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
         Tile maybeTile = other.GetComponent<Tile>();
-        if (maybeTile == null) return;
-        if (maybeTile.hasTag(TileTags.Creature) && _causeDamage)
+        if (maybeTile != null && _causeDamage && !maybeTile.hasTag(TileTags.Weapon))
         {
-            maybeTile.takeDamage(this,1);
-            
-            
-            
-            
-            
-            
-//            if (Dir == Direction.Vertical)
-//            {
-//              Vector3 force = transform.position + Vector3.down;
-//            }
-//            if (Dir == Direction.Horizontal)
-//            {
-//                Vector3 force = transform.position + Vector3.right;
-//            }
-
+            maybeTile.takeDamage(this, 1);
             maybeTile.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(other.transform.position - transform.position)* 10, ForceMode2D.Impulse);
+            return;
         }
+       
     }
 }

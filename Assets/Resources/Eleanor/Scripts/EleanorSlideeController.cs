@@ -24,7 +24,6 @@ public class EleanorSlideeController : apt283BFSEnemy
     
     public override void Update()
     {
-        
         _timeSinceLastStep += Time.deltaTime;
         Vector2 targetGlobalPos = Tile.toWorldCoord(_targetGridPos.x, _targetGridPos.y);
         float distanceToTarget = Vector2.Distance(transform.position, targetGlobalPos);
@@ -51,6 +50,8 @@ public class EleanorSlideeController : apt283BFSEnemy
         }
 
     }
+    
+    
     public override void FixedUpdate()
     {
             Vector2 targetGlobalPos = Tile.toWorldCoord(_targetGridPos.x, _targetGridPos.y);
@@ -112,11 +113,10 @@ public class EleanorSlideeController : apt283BFSEnemy
     {
         Tile maybeTile = other.GetComponent<Tile>();
         if (maybeTile == null) return;
-        if (maybeTile.tileName == "Ghost")
+        if (maybeTile.tileName.Contains("Ghost"))
         {
             _follow = true;
         }
+       
     }
-    
-    
 }

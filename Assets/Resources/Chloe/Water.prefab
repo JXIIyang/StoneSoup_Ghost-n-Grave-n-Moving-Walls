@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7558444880229736003}
   - component: {fileID: 7558444880229736000}
   - component: {fileID: 6783705586813911344}
+  - component: {fileID: 6832152363662713334}
   m_Layer: 4
   m_Name: Water
   m_TagString: Tile
@@ -101,3 +102,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &6832152363662713334
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558444880229736001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.24

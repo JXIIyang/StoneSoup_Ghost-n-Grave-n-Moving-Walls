@@ -11,7 +11,9 @@ public class TeagueBatteringRam : Tile
         if (tileUsingUs != null)
         {
             tileUsingUs.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            if (Physics2D.Raycast(tileUsingUs.transform.position, tileUsingUs.aimDirection, new ContactFilter2D(), _maybeRaycastResults, 100) > 0)
+            ContactFilter2D cf = new ContactFilter2D();
+            cf.NoFilter();
+            if (Physics2D.Raycast(tileUsingUs.transform.position, tileUsingUs.aimDirection, cf, _maybeRaycastResults, 25) > 0)
             {
                 //get which tile was hit
                 Tile affectedTile = null;
@@ -20,9 +22,10 @@ public class TeagueBatteringRam : Tile
                 while (i < _maybeRaycastResults.Length && _maybeRaycastResults[i].collider != null && affectedTile == null)
                 {
                     Tile tempTile = _maybeRaycastResults[i].collider.GetComponent<Tile>();
-                    if (tempTile != null && !tempTile.hasTag(TileTags.Player))
+                    if (tempTile != null && tempTile != this && !tempTile.hasTag(TileTags.Player) && (!tempTile.hasTag(TileTags.CanBeHeld) || tempTile.hasTag(TileTags.Wall)))
                     {
                         affectedTile = tempTile;
+                        print(affectedTile);
                     }
                     i++;
                 }
@@ -36,10 +39,43 @@ public class TeagueBatteringRam : Tile
                         affectedTile.gameObject.AddComponent<TeagueMovableTile>().trueTile = affectedTile;
                         takeDamage(this, 1);
                     }
-                    affectedTile.addForce(tileUsingUs.aimDirection * 5000);
+                    affectedTile.addForce(Snap2Grid(tileUsingUs.aimDirection) * 4000);
                 }
             }
             tileUsingUs.addForce(tileUsingUs.aimDirection * 2000);
         }
+    }
+
+    public Vector2 Snap2Grid(Vector2 vector)
+    {
+        vector.Normalize();
+        //return a normalized vector in the cardinal direction closest to input vector
+        if (Mathf.Abs(vector.x) > Mathf.Abs(vector.y))
+        {
+            return Vector2.right * (vector.x / Mathf.Abs(vector.x));
+        }
+        else
+        {
+            return Vector2.up * (vector.y / Mathf.Abs(vector.y));
+        }
+    }
+
+    public void Update()
+    {
+        if (_tileHoldingUs != null && _tileHoldingUs.hasTag(TileTags.Player))
+        {
+            if (Player.instance.sprite.flipX && !sprite.flipX)
+            {
+                sprite.flipX = true;
+                transform.localPosition = new Vector2(-heldOffset.x, heldOffset.y);
+            }
+            if (!Player.instance.sprite.flipX && sprite.flipX)
+            {
+                sprite.flipX = false;
+                transform.localPosition = new Vector2(heldOffset.x, heldOffset.y);
+            }
+        }
+
+        updateSpriteSorting();
     }
 }

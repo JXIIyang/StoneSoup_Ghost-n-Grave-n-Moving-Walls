@@ -44,9 +44,10 @@ public class TeaguePressurePad : Tile
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Tile>() != null && collision.gameObject.GetComponent<Tile>().hasTag(TileTags.Wall))
+        Tile tile = collision.gameObject.GetComponent<Tile>();
+        if (tile != null && tile.hasTag(TileTags.Wall))
         {
-            if (triggering == null && Vector2.Distance(collision.transform.position, transform.position) < 1)
+            if (triggering == null && Vector2.Distance(collision.transform.position, transform.position) < 1 && !tile.isBeingHeld)
             {
                 triggering = collision.gameObject;
             }

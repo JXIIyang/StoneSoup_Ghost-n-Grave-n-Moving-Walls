@@ -150,3 +150,9 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
+  tileThatThrewUs: {fileID: 0}
+  throwDestination: {x: 0, y: 0}
+  throwDistance: 5
+  timeAtMax: 0
+  maxTime: 1
+  thrown: 0

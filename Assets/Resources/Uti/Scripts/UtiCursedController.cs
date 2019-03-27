@@ -148,7 +148,7 @@ public class UtiCursedController : MonoBehaviour
             }
         }
 
-        if (cursed == 0)
+        if (cursed <= 0)
         {
             if (Camera.main.gameObject.GetComponent<ContrastEnhance>())
             {

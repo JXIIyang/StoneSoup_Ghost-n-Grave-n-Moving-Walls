@@ -57,9 +57,12 @@ public class utiWolfFamiliar : Tile
         {
             transform.position = new Vector3(0, 0, 0);
         }
-        transform.localScale =
-            new Vector3(-Mathf.Sign(GameObject.Find("player_tile(Clone)").transform.position.x - transform.position.x) * 6,
-            transform.localScale.y, transform.localScale.z);
+        if (GameObject.Find("player_tile(Clone)"))
+        {
+            transform.localScale =
+                new Vector3(-Mathf.Sign(GameObject.Find("player_tile(Clone)").transform.position.x - transform.position.x) * 6,
+                transform.localScale.y, transform.localScale.z);
+        }
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)

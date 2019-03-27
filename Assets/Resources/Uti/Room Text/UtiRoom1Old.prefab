@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443e5f87f8e514d6b9b4ac772b5008a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomAuthor: 
+  roomAuthor: Uti
   designedRoomFile: {fileID: 4900000, guid: 72ffdf336fe6aa14dad1d2a9b305dca2, type: 3}
   localTilePrefabs: []
   roomGridX: 0

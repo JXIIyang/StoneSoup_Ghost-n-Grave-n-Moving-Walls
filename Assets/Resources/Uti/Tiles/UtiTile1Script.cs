@@ -15,7 +15,9 @@ public class UtiTile1Script : Tile
     // Update is called once per frame
     void Update()
     {
-        
+        transform.localScale =
+            new Vector3(-Mathf.Sign(GameObject.Find("player_tile(Clone)").transform.position.x - transform.position.x) * 0.35f,
+            transform.localScale.y, transform.localScale.z);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -133,4 +133,15 @@ public class UtiCursedController : MonoBehaviour
             }
         }
     }
+
+
+    public void ReduceCursed(int x)
+    {
+        cursed -= x;
+    }
+
+    public void AddCursed(int x)
+    {
+        cursed += x;
+    }
 }

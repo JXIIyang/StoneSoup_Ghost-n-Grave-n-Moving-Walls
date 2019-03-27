@@ -34,11 +34,14 @@ public class UtiCursedController : MonoBehaviour
         DontDestroyOnLoad(hello);
         hello.GetComponent<AudioSource>().loop = true;
         hello.GetComponent<AudioSource>().Play();
+        hello.AddComponent<DestroyOnDeath>();
+        this.gameObject.AddComponent<DestroyOnDeath>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (SceneManager.GetActiveScene().name =="PlayScene")
         {
             if (otherScene)
@@ -50,9 +53,9 @@ public class UtiCursedController : MonoBehaviour
                     if (go.GetComponent<Tile>())
                     {
                         if(go.GetComponent<Tile>().hasTag(TileTags.Creature) ||
-                            go.GetComponent<Tile>().hasTag(TileTags.Enemy) ||
-                            go.GetComponent<Tile>().hasTag(TileTags.Friendly))
-                        {
+                        go.GetComponent<Tile>().hasTag(TileTags.Enemy) ||
+                        go.GetComponent<Tile>().hasTag(TileTags.Friendly)) {
+
                             go.AddComponent<UtiSpawnGhost>().ghost = ghost;
                         }
                     }
@@ -82,14 +85,6 @@ public class UtiCursedController : MonoBehaviour
                 gray = Camera.main.gameObject.AddComponent<Grayscale>();
                 gray.shader = shaders[3];
             }
-            if (Camera.main.gameObject.GetComponent<MotionBlur>() == false)
-            {
-                blur = Camera.main.gameObject.AddComponent<MotionBlur>();
-                blur.shader = shaders[4];
-                //blur.dx11MotionBlurShader = shaders[5];
-                //blur.replacementClear = shaders[6];
-                //blur.noiseTexture = texture2D;
-            }
             if (Camera.main.gameObject.GetComponent<VignetteAndChromaticAberration>() == false)
             {
                 vignette = Camera.main.gameObject.AddComponent<VignetteAndChromaticAberration>();
@@ -102,19 +97,21 @@ public class UtiCursedController : MonoBehaviour
             otherScene = true;
         }
 
-        contrast.intensity = cursed * cursed;
+        
+        contrast.intensity = cursed * cursed * 3f;
+
         tonemap.exposureAdjustment = cursed * 1.5f + 1.5f;
 
-        vignette.intensity = cursed / 17f;
+        vignette.intensity = cursed / 14f + 0.225f;
         vignette.intensity = Mathf.Clamp(vignette.intensity, 0f, 0.8f);
 
-        vignette.chromaticAberration = cursed * 4f + Random.Range((cursed * 4f)/-7, (cursed * 4f) / 7);
+        vignette.chromaticAberration = cursed * 10f + Random.Range((cursed * 4f)/-7, (cursed * 4f) / 7);
 
-        vignette.blur = cursed / 17f;
+        vignette.blur = cursed / 12 + 0.5f;
         vignette.blur = Mathf.Clamp(vignette.intensity, 0f, 0.4f);
         vignette.blurSpread = 100f;
 
-
+       
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             GameObject hallo = Instantiate(new GameObject("note1"), this.transform);

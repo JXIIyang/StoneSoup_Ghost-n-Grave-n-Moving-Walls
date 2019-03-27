@@ -26,23 +26,26 @@ public class UtiGravestoneScript : Tile
 
     public override void pickUp(Tile tilePickingUsUp)
     {
-        if (!hasTag(TileTags.CanBeHeld))
-        {
-            return;
-        }
-        if (_body != null)
-        {
-            _body.velocity = Vector2.zero;
-            _body.bodyType = RigidbodyType2D.Kinematic;
-        }
-        transform.parent = tilePickingUsUp.transform;
-        transform.localPosition = new Vector3(heldOffset.x, heldOffset.y, -0.1f);
-        transform.localRotation = Quaternion.Euler(0, 0, heldAngle);
-        removeTag(TileTags.CanBeHeld);
-        tilePickingUsUp.tileWereHolding = this;
-        _tileHoldingUs = tilePickingUsUp;
         if (!pickedUp)
         {
+            if (!hasTag(TileTags.CanBeHeld))
+            {
+                return;
+            }
+            if (_body != null)
+            {
+                _body.velocity = Vector2.zero;
+                _body.bodyType = RigidbodyType2D.Kinematic;
+            }
+
+            transform.parent = tilePickingUsUp.transform;
+            transform.localPosition = new Vector3(heldOffset.x, heldOffset.y, -0.1f);
+            transform.localRotation = Quaternion.Euler(0, 0, heldAngle);
+
+            removeTag(TileTags.CanBeHeld);
+            tilePickingUsUp.tileWereHolding = this;
+            _tileHoldingUs = tilePickingUsUp;
+
             GameObject apple = Instantiate(blackApple);
             apple.transform.position = transform.position;
             if (GameObject.Find("UtiCursed(Clone)") && !ghostCalled)
@@ -52,7 +55,32 @@ public class UtiGravestoneScript : Tile
                 ghostCalled = true;
             }
             pickedUp = true;
+            updateSpriteSorting();
         }
+        
+    }
+
+    public override void dropped(Tile tileDroppingUs)
+    {
+        if (_tileHoldingUs != tileDroppingUs)
+        {
+            return;
+        }
+        if (onTransitionArea())
+        {
+            return; // Don't allow items to drop on the transition area.
+        }
+
+        if (_body != null)
+        {
+            _body.bodyType = RigidbodyType2D.Dynamic;
+        }
+        // We move ourselves to the current room when we're dropped
+        transform.localPosition = new Vector3(0.2f, -0.4f, -0.1f);
+        transform.localRotation = Quaternion.identity;
+        transform.parent = tileDroppingUs.transform.parent;
+        _tileHoldingUs.tileWereHolding = null;
+        _tileHoldingUs = null;
         updateSpriteSorting();
     }
 
@@ -74,7 +102,6 @@ public class UtiGravestoneScript : Tile
         }
         if (dieChance > 66)
         {
-            AddCursed();
             if (!pickedUp)
             {
                 GameObject apple = Instantiate(blackApple);

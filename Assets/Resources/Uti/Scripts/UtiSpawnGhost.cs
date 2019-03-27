@@ -11,7 +11,7 @@ public class UtiSpawnGhost : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (GetComponent<Tile>().health <= 0)
+        if (GetComponent<Tile>().health <= 0 && this.gameObject.name!="player_tile(Clone)")
         {
             GameObject ghost1 = Instantiate(ghost);
             ghost1.transform.position = transform.position;

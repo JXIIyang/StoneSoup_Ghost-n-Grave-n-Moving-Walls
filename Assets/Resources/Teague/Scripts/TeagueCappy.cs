@@ -65,7 +65,7 @@ public class TeagueCappy : Tile
     }
 
     // When we collide with something in the air, we try to deal damage to it.
-    public virtual void OnCollisionEnter2D(Collider2D collision)
+    public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         
     }

@@ -55,17 +55,59 @@ public class TeagueCappy : Tile
                 {
                     addTag(TileTags.CanBeHeld);
                     _collider.isTrigger = true;
+                    if (tileThatThrewUs.tileWereHolding != null)
+                    {
+                        tileThatThrewUs.tileWereHolding.dropped(tileThatThrewUs);
+                    }
                     pickUp(tileThatThrewUs);
                     thrown = false;
                 }
             }
         }
-
+        else
+        {
+            if (_tileHoldingUs != null && _tileHoldingUs.hasTag(TileTags.Player))
+            {
+                if (Player.instance.sprite.flipX && !sprite.flipX)
+                {
+                    sprite.flipX = true;
+                    transform.localPosition = new Vector2(-heldOffset.x, heldOffset.y);
+                }
+                if (!Player.instance.sprite.flipX && sprite.flipX)
+                {
+                    sprite.flipX = false;
+                    transform.localPosition = new Vector2(heldOffset.x, heldOffset.y);
+                }
+            }
+        }
         updateSpriteSorting();
     }
+    
+    public virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(thrown && collision.gameObject.GetComponent<Tile>() != null)
+        {
+            /*
+            Tile tileWeHit = collision.gameObject.GetComponent<Tile>();
+            if (tileWeHit.gameObject.GetComponent<Rigidbody2D>() != null)
+            {
+                gameObject.AddComponent<TeagueCappyPlayer>().possessed = tileWeHit.gameObject;
+                GetComponent<TeagueCappyPlayer>().playerState = Player.instance.gameObject;
+                GetComponent<Collider2D>().isTrigger = true;
+                transform.position = tileWeHit.transform.position + new Vector3(0, collision.collider.bounds.extents.y + collision.collider.offset.y, transform.position.z);
+                Physics2D.IgnoreCollision(collision.collider, collision.otherCollider, true);
+                transform.parent = tileWeHit.transform;
+                GetComponent<TeagueCappyPlayer>().UpdatePlayer();
+                //Destroy(tileThatThrewUs.gameObject);
+                Destroy(this);
+            }
+            */
+            collision.gameObject.GetComponent<Tile>().takeDamage(this, 1);
+            collision.gameObject.GetComponent<Tile>().addForce((collision.transform.position - transform.position).normalized * 1500);
+        }
+    }
 
-    // When we collide with something in the air, we try to deal damage to it.
-    public virtual void OnCollisionEnter2D(Collider2D collision)
+    public override void takeDamage(Tile tileDamagingUs, int damageAmount, DamageType damageType)
     {
         
     }

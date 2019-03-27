@@ -30,7 +30,6 @@ public class EleanorSlideeController : apt283BFSEnemy
         if (distanceToTarget <= GRID_SNAP_THRESHOLD || _timeSinceLastStep >= 2f) {
             takeStep();
         }
-        Debug.Log(targetGlobalPos);
         updateSpriteSorting();
         if (_chase)
         {

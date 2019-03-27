@@ -185,7 +185,7 @@ MonoBehaviour:
   maxSearchDepth: 6
   pathColliderRadius: 0.7
   CasualTime: 3
-  RushTime: 5
+  RushTime: 3
 --- !u!50 &91419709165441046
 Rigidbody2D:
   serializedVersion: 4

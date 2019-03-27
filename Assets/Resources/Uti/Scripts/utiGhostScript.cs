@@ -19,6 +19,7 @@ public class utiGhostScript : Tile
     // Update is called once per frame
     void Update()
     {
+
         timer++;
         health = 10000;
 
@@ -51,7 +52,9 @@ public class utiGhostScript : Tile
             transform.position = new Vector3(transform.position.x + Random.Range(-0.05f, 0.05f), transform.position.y + Random.Range(-0.05f, 0.05f), -1f);
         }
 
-
+        transform.localScale =
+            new Vector3(-Mathf.Sign(GameObject.Find("player_tile(Clone)").transform.position.x - transform.position.x) * 2,
+            transform.localScale.y, transform.localScale.z);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -81,4 +84,6 @@ public class utiGhostScript : Tile
             tempGel = other.gameObject;
         }
     }
+
+    
 }

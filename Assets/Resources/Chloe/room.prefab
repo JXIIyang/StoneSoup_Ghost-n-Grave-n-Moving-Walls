@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4935011041237213416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338422772211043667}
+  - component: {fileID: 8167944109980626437}
+  m_Layer: 0
+  m_Name: room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1338422772211043667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935011041237213416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8167944109980626437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935011041237213416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4cf888dae5cdcd459a6c09527db51c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomAuthor: Chloe
+  designedRoomFile: {fileID: 4900000, guid: 8669beebd3e34e946852faf2f2a357be, type: 3}
+  localTilePrefabs: []
+  roomGridX: 0
+  roomGridY: 0
+  LabeledRooms:
+  - {fileID: 8789363327862157684, guid: 0f7f07c3edb4bda4cbb4278aefc8739e, type: 3}
+  - {fileID: 8789363327862157684, guid: f5d3d4922cc129c42a9da25922005776, type: 3}
+  - {fileID: 5404726527354857219, guid: adfdfecc657e6a64cb3d3d32c7ac1080, type: 3}
+  - {fileID: 1235128211188615081, guid: c415b1175d8322e41894756d828cf3f7, type: 3}
+  - {fileID: 437577023231946382, guid: 86a51fbcc90ffa24e96fb78b9d49f81d, type: 3}
+  - {fileID: 1544777467442937406, guid: a32bb87ead498f8458058d496e108ba2, type: 3}
+  - {fileID: 2873850265565979779, guid: a7078f4fe0dc36c448ee32d204d5f5c0, type: 3}
+  - {fileID: 2907875767714541942, guid: 2df929870c86a724788a90b74d543979, type: 3}
+  - {fileID: 3404953652433823903, guid: 8268670c37162564587842f76ab6b345, type: 3}
+  - {fileID: 151548630896257869, guid: fdc0a87e7e1bb814195e4860e784a95e, type: 3}

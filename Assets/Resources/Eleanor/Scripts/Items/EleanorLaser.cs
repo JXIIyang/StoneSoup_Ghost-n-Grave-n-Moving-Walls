@@ -48,7 +48,7 @@ public class EleanorLaser : Tile
 
         foreach (Collider2D col in Physics2D.OverlapCircleAll(transform.position, 1f))
         {
-            if (col.GetComponent<Tile>().hasTag(TileTags.Wall))
+            if (col.GetComponent<Tile>() != null && col.GetComponent<Tile>().hasTag(TileTags.Wall))
                 _hasAdjacentWall = true;
         }
 

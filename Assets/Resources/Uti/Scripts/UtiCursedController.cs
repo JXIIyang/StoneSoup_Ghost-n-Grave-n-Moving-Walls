@@ -35,13 +35,27 @@ public class UtiCursedController : MonoBehaviour
         hello.GetComponent<AudioSource>().loop = true;
         hello.GetComponent<AudioSource>().Play();
         hello.AddComponent<DestroyOnDeath>();
+        hello.AddComponent<UtiDestroyWhenNotCursed>();
         this.gameObject.AddComponent<DestroyOnDeath>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            GameObject.Find("UtiCursed(Clone)").GetComponent<UtiCursedController>().ReduceCursed(1);
+            if (GameObject.Find("UtiWolfFamiliar(Clone)"))
+            {
+                Destroy(GameObject.Find("UtiWolfFamiliar(Clone)").gameObject);
+            } else
+            {
+                GameObject.Find("UtiWolfHead(Clone)").GetComponent<Tile>().dropped(GameObject.Find("player_tile(Clone)").GetComponent<Tile>());
+                Destroy(GameObject.Find("UtiWolfHead(Clone)").gameObject);
+            }
+            
+        }
+
         if (SceneManager.GetActiveScene().name =="PlayScene")
         {
             if (otherScene)
@@ -102,7 +116,7 @@ public class UtiCursedController : MonoBehaviour
 
         tonemap.exposureAdjustment = cursed * 1.5f + 1.5f;
 
-        vignette.intensity = cursed / 14f + 0.225f;
+        vignette.intensity = cursed / 20f + 0.35f;
         vignette.intensity = Mathf.Clamp(vignette.intensity, 0f, 0.8f);
 
         vignette.chromaticAberration = cursed * 10f + Random.Range((cursed * 4f)/-7, (cursed * 4f) / 7);
@@ -118,6 +132,7 @@ public class UtiCursedController : MonoBehaviour
             hallo.AddComponent<AudioSource>().clip = soundArray[Random.Range(0, soundArray.Length)];
             hallo.GetComponent<AudioSource>().Play();
             hallo.GetComponent<AudioSource>().loop = true;
+            hallo.AddComponent<UtiDestroyWhenNotCursed>();
             soundClips[currentArrayValue] = hallo;
             
 
@@ -131,6 +146,27 @@ public class UtiCursedController : MonoBehaviour
             {
                 Destroy(transform.GetChild(0).gameObject);
             }
+        }
+
+        if (cursed == 0)
+        {
+            if (Camera.main.gameObject.GetComponent<ContrastEnhance>())
+            {
+                Destroy(Camera.main.gameObject.GetComponent<ContrastEnhance>());
+            }
+            if (Camera.main.gameObject.GetComponent<Tonemapping>())
+            {
+                Destroy(Camera.main.gameObject.GetComponent<Tonemapping>());
+            }
+            if (Camera.main.gameObject.GetComponent<Grayscale>())
+            {
+                Destroy(Camera.main.gameObject.GetComponent<Grayscale>());
+            }
+            if (Camera.main.gameObject.GetComponent<VignetteAndChromaticAberration>());
+            {
+                Destroy(Camera.main.gameObject.GetComponent<VignetteAndChromaticAberration>());
+            }
+            Destroy(this.gameObject);
         }
     }
 

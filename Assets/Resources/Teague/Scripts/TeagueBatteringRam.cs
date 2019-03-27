@@ -39,24 +39,10 @@ public class TeagueBatteringRam : Tile
                         affectedTile.gameObject.AddComponent<TeagueMovableTile>().trueTile = affectedTile;
                         takeDamage(this, 1);
                     }
-                    affectedTile.addForce(Snap2Grid(tileUsingUs.aimDirection) * 4000);
+                    affectedTile.addForce(tileUsingUs.aimDirection * 4000);
                 }
             }
             tileUsingUs.addForce(tileUsingUs.aimDirection * 2000);
-        }
-    }
-
-    public Vector2 Snap2Grid(Vector2 vector)
-    {
-        vector.Normalize();
-        //return a normalized vector in the cardinal direction closest to input vector
-        if (Mathf.Abs(vector.x) > Mathf.Abs(vector.y))
-        {
-            return Vector2.right * (vector.x / Mathf.Abs(vector.x));
-        }
-        else
-        {
-            return Vector2.up * (vector.y / Mathf.Abs(vector.y));
         }
     }
 

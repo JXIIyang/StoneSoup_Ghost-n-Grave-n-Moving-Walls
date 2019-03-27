@@ -12,6 +12,7 @@ public class utiWolfFamiliar : Tile
     void Start()
     {
         DontDestroyOnLoad(this);
+        this.gameObject.AddComponent<DestroyOnDeath>();
     }
 
     // Update is called once per frame
@@ -49,7 +50,7 @@ public class utiWolfFamiliar : Tile
                     attacking = true;
                 }
                 transform.position = Vector2.Lerp(transform.position, GameObject.Find("player_tile(Clone)").transform.position, Random.Range(0.001f, 0.009f));
-                transform.position = new Vector3(transform.position.x + Random.Range(-0.05f, 0.05f), transform.position.y + Random.Range(-0.05f, 0.05f), -1f);
+                transform.position = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y + Random.Range(-0.1f, 0.1f), -1f);
             }
         } else
         {

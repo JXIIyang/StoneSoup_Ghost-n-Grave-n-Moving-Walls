@@ -11,6 +11,7 @@ public class EleanorSlideeController : apt283BFSEnemy
     private bool _rush;
     private bool _chase;    
     private float _timer;
+    private bool _follow;
 
 
     public override void Start()
@@ -23,7 +24,6 @@ public class EleanorSlideeController : apt283BFSEnemy
     
     public override void Update()
     {
-        
         _timeSinceLastStep += Time.deltaTime;
         Vector2 targetGlobalPos = Tile.toWorldCoord(_targetGridPos.x, _targetGridPos.y);
         float distanceToTarget = Vector2.Distance(transform.position, targetGlobalPos);
@@ -50,34 +50,41 @@ public class EleanorSlideeController : apt283BFSEnemy
         }
 
     }
+    
+    
     public override void FixedUpdate()
     {
-        Vector2 targetGlobalPos = Tile.toWorldCoord(_targetGridPos.x, _targetGridPos.y);
-        if (Vector2.Distance(transform.position, targetGlobalPos) >= 0.1f) {
-            // If we're away from our target position, move towards it.
-            Vector2 toTargetPos = (targetGlobalPos - (Vector2)transform.position).normalized;
-            _chase = true;
-            if(_rush)
+            Vector2 targetGlobalPos = Tile.toWorldCoord(_targetGridPos.x, _targetGridPos.y);
+            if (Vector2.Distance(transform.position, targetGlobalPos) >= 0.1f || _follow)
             {
-                moveViaVelocity(toTargetPos, moveSpeed * 3, moveAcceleration);
-                _anim.SetInteger("MovingStatus", 2);
-            }
-            else
-            {
-                moveViaVelocity(toTargetPos, moveSpeed, moveAcceleration);
-                _anim.SetInteger("MovingStatus", 1);
-            }
-            
-            
-            // Figure out which direction we're going to face. 
-            // Prioritize side and down.
-            if (_anim != null) {
-                if (toTargetPos.x >= 0) {
-                    _sprite.flipX = false;
+                // If we're away from our target position, move towards it.
+                Vector2 toTargetPos = (targetGlobalPos - (Vector2) transform.position).normalized;
+                _chase = true;
+                if (_rush)
+                {
+                    moveViaVelocity(toTargetPos, moveSpeed * 3, moveAcceleration);
+                    _anim.SetInteger("MovingStatus", 2);
                 }
-                else {
-                    _sprite.flipX = true;
+                else
+                {
+                    moveViaVelocity(toTargetPos, moveSpeed, moveAcceleration);
+                    _anim.SetInteger("MovingStatus", 1);
                 }
+
+
+                // Figure out which direction we're going to face. 
+                // Prioritize side and down.
+                if (_anim != null)
+                {
+                    if (toTargetPos.x >= 0)
+                    {
+                        _sprite.flipX = false;
+                    }
+                    else
+                    {
+                        _sprite.flipX = true;
+                    }
+
 //                if (Mathf.Abs(toTargetPos.x) > 0 && Mathf.Abs(toTargetPos.x) > Mathf.Abs(toTargetPos.y)) {
 //                    _anim.SetInteger("Direction", 1);
 //                }
@@ -87,18 +94,29 @@ public class EleanorSlideeController : apt283BFSEnemy
 //                else if (toTargetPos.y < 0 && Mathf.Abs(toTargetPos.y) > Mathf.Abs(toTargetPos.x)) {
 //                    _anim.SetInteger("Direction", 2);
 //                }
+                }
             }
-        }
-        else {
-            moveViaVelocity(Vector2.zero, 0, moveAcceleration);
-            _timer = 0;
-            _rush = false;
-            if (_anim != null) {
-                _anim.SetInteger("MovingStatus", 0);
-                _chase = false;
+            else
+            {
+                moveViaVelocity(Vector2.zero, 0, moveAcceleration);
+                _timer = 0;
+                _rush = false;
+                if (_anim != null)
+                {
+                    _anim.SetInteger("MovingStatus", 0);
+                    _chase = false;
+                }
             }
-        }
     }
-    
-    
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        Tile maybeTile = other.GetComponent<Tile>();
+        if (maybeTile == null) return;
+        if (maybeTile.tileName.Contains("Ghost"))
+        {
+            _follow = true;
+        }
+       
+    }
 }

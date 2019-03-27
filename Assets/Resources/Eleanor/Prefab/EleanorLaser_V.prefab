@@ -175,8 +175,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags: 0
   tileName: Laser
-  health: 10
-  deathEffect: {fileID: 0}
+  health: 1
+  deathEffect: {fileID: 1028137201516130, guid: c6956d67d496541a48fe508b48f70f4b,
+    type: 3}
   deathSFX: {fileID: 0}
   heldOffset: {x: 0.2, y: -0.1}
   heldAngle: 0
@@ -209,5 +210,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 4}
+  m_Size: {x: 0.5, y: 4}
   m_EdgeRadius: 0

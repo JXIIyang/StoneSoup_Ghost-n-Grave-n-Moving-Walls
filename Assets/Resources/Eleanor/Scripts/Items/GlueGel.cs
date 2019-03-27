@@ -30,30 +30,50 @@ public class GlueGel : Tile
     }
     
     void OnTriggerEnter2D(Collider2D otherCollider) {
-        Tile maybeTile = otherCollider.GetComponent<Tile>();
-        if (maybeTile.hasTag(TileTags.Creature))
-        {
+//        Tile maybeTile = otherCollider.GetComponent<Tile>();
+//        if (maybeTile.hasTag(TileTags.Creature))
+//        {
+//
+//            maybeTile.GetComponent<Rigidbody2D>().velocity =
+//                new Vector2(
+//                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.x, 0.0f, _clampSpeed),
+//                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.y, 0.0f, _clampSpeed)
+//                );
+//        }
 
-            maybeTile.GetComponent<Rigidbody2D>().velocity =
+        Rigidbody2D rb = otherCollider.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity =
                 new Vector2(
-                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.x, 0.0f, _clampSpeed),
-                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.y, 0.0f, _clampSpeed)
+                    Mathf.Clamp(rb.velocity.x, 0.0f, _clampSpeed),
+                    Mathf.Clamp(rb.velocity.y, 0.0f, _clampSpeed)
                 );
         }
-        Debug.Log("enter");
+        
+        
+        
     }
     void OnTriggerStay2D(Collider2D otherCollider) {
-        Tile maybeTile = otherCollider.GetComponent<Tile>();
-        if (maybeTile.hasTag(TileTags.Creature))
+//        Tile maybeTile = otherCollider.GetComponent<Tile>();
+//        if (maybeTile.hasTag(TileTags.Creature))
+//        {
+//
+//            maybeTile.GetComponent<Rigidbody2D>().velocity =
+//                new Vector2(
+//                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.x, 0.0f, _clampSpeed),
+//                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.y, 0.0f, _clampSpeed)
+//                );
+//        }
+        Rigidbody2D rb = otherCollider.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-
-            maybeTile.GetComponent<Rigidbody2D>().velocity =
+            rb.velocity =
                 new Vector2(
-                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.x, 0.0f, _clampSpeed),
-                    Mathf.Clamp(maybeTile.GetComponent<Rigidbody2D>().velocity.y, 0.0f, _clampSpeed)
+                    Mathf.Clamp(rb.velocity.x, 0.0f, _clampSpeed),
+                    Mathf.Clamp(rb.velocity.y, 0.0f, _clampSpeed)
                 );
         }
-        Debug.Log("stay");
     }
 
     void DryOut()

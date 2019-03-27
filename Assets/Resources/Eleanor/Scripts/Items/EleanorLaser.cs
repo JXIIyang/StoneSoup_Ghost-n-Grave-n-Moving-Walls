@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EleanorLaser : Tile
 {
@@ -23,6 +25,7 @@ public class EleanorLaser : Tile
     private Vector3 _initialPos;
 
     private float _offset;
+    private bool _hasAdjacentWall;
     
     // Start is called before the first frame update
     void Start()
@@ -41,7 +44,18 @@ public class EleanorLaser : Tile
     void Update()
     {
 //        _renderer.color = new Color(1,1,1,(Mathf.Sin(6)) );
-        
+
+
+        foreach (Collider2D col in Physics2D.OverlapCircleAll(transform.position, 1f))
+        {
+            if (col.GetComponent<Tile>().hasTag(TileTags.Wall))
+                _hasAdjacentWall = true;
+        }
+
+        if (!_hasAdjacentWall)
+        {
+            takeDamage(null, 1);
+        }
         
         timer -= Time.deltaTime;
         if (timer < 1)
@@ -69,33 +83,28 @@ public class EleanorLaser : Tile
                 transform.position = _initialPos + Vector3.left * Mathf.Sin(Time.time + _offset);
                 
         }
+        
+        _hasAdjacentWall = false;
        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
         Tile maybeTile = other.GetComponent<Tile>();
-        if (maybeTile == null) return;
-        if (maybeTile.hasTag(TileTags.Creature) && _causeDamage)
+        if (maybeTile.tileName.Contains("rock") || maybeTile.tileName.Contains("bullet"))
         {
-            maybeTile.takeDamage(this,1);
-            
-            
-            
-            
-            
-            
-//            if (Dir == Direction.Vertical)
-//            {
-//              Vector3 force = transform.position + Vector3.down;
-//            }
-//            if (Dir == Direction.Horizontal)
-//            {
-//                Vector3 force = transform.position + Vector3.right;
-//            }
-
-            maybeTile.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(other.transform.position - transform.position)* 10, ForceMode2D.Impulse);
+            maybeTile.takeDamage(this, 1);
         }
+        if (maybeTile != null && _causeDamage && rb != null && !maybeTile.hasTag(TileTags.Weapon))
+        {
+            maybeTile.takeDamage(this, 1);
+            rb.AddForce(Vector3.Normalize(other.transform.position - transform.position)* 50, ForceMode2D.Impulse);
+            if (maybeTile.hasTag(TileTags.Wall)) {takeDamage(maybeTile,1);}
+        }
+       
     }
+    
+    
+    
 }

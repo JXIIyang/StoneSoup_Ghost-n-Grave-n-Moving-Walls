@@ -19,15 +19,28 @@ public class EleanorStatueController : Tile
     private Tile tileholdingus;
 
     public GameObject TradeMark;
+    private UtiCursedController _cursedController;
 
     private float _timer = 2;
-    
+
     public void Update()
     {
+
+        if (_cursedController == null)
+        {
+            _cursedController = GameObject.Find("UtiCursed(Clone)").GetComponent<UtiCursedController>();
+        }
+
         if (_tradeReady && Input.GetKeyDown(KeyCode.T))
         {
             _trade = true;
             Destroy(tileholdingus.tileWereHolding.gameObject);
+            if (_cursedController != null && _cursedController.cursed > 0)
+            {
+                _cursedController.cursed--;
+            }
+
+
             tileholdingus.health+=2;
         }
         if (_trade)
@@ -91,6 +104,11 @@ public class EleanorStatueController : Tile
         if (!tilePickingUsUp.hasTag(TileTags.Player))
             return;
             _pray = true;
+        Debug.Log(_cursedController.cursed);
+        if (_cursedController != null && _cursedController.cursed > 0)
+        {
+            _cursedController.cursed--;
+        }
 
     }
 

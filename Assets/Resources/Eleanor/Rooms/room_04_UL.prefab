@@ -46,7 +46,7 @@ MonoBehaviour:
   roomAuthor: Eleanor
   designedRoomFile: {fileID: 4900000, guid: 5d1b44aa1f5274ce18b686cb32f6e54b, type: 3}
   localTilePrefabs:
-  - {fileID: 7299188409798205304, guid: 4c09dd8366bb34a01abb4cdc770d03cc, type: 3}
+  - {fileID: 1387771116485768, guid: e4d00d2fcd2614042856187fc264cd0d, type: 3}
   - {fileID: 1376035031062694, guid: 78f95855a030f41dd8db1eb469d7aee2, type: 3}
   - {fileID: 4098967283552485669, guid: eb4dd86b683f647d4a47e2a4ad468354, type: 3}
   roomGridX: 0

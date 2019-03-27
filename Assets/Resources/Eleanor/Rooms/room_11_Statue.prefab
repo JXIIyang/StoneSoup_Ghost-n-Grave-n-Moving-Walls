@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1338422772211043667}
   - component: {fileID: 1885809616068062221}
   m_Layer: 0
-  m_Name: room_11_U
+  m_Name: room_11_Statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,16 +46,16 @@ MonoBehaviour:
   roomAuthor: Eleanor
   designedRoomFile: {fileID: 4900000, guid: 41e866ae9ad3d4eae93dc715ade7a97c, type: 3}
   localTilePrefabs:
-  - {fileID: 7299188409798205304, guid: 4c09dd8366bb34a01abb4cdc770d03cc, type: 3}
+  - {fileID: 557064156012669699, guid: d137a4f82617c4651b31c4ecd07fac46, type: 3}
   roomGridX: 0
   roomGridY: 0
   HasUpExit: 1
-  HasRightExit: 0
-  HasDownExit: 0
-  HasLeftExit: 0
-  HasUpRightPath: 0
-  HasUpDownPath: 0
-  HasUpLeftPath: 0
-  HasRightDownPath: 0
-  HasRightLeftPath: 0
-  HasDownLeftPath: 0
+  HasRightExit: 1
+  HasDownExit: 1
+  HasLeftExit: 1
+  HasUpRightPath: 1
+  HasUpDownPath: 1
+  HasUpLeftPath: 1
+  HasRightDownPath: 1
+  HasRightLeftPath: 1
+  HasDownLeftPath: 1

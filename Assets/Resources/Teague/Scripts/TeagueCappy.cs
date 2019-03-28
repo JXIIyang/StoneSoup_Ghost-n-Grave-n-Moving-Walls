@@ -25,7 +25,6 @@ public class TeagueCappy : Tile
 
             // Have to do some book keeping similar to when we're dropped.
             _body.bodyType = RigidbodyType2D.Dynamic;
-            _collider.isTrigger = false;
             transform.parent = tileUsingUs.transform.parent;
             tileUsingUs.tileWereHolding = null;
             _tileHoldingUs = null;
@@ -83,27 +82,32 @@ public class TeagueCappy : Tile
         updateSpriteSorting();
     }
     
-    public virtual void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collider)
     {
-        if(thrown && collision.gameObject.GetComponent<Tile>() != null)
+        if(thrown && collider.gameObject.GetComponent<Tile>() != null)
         {
-            /*
-            Tile tileWeHit = collision.gameObject.GetComponent<Tile>();
-            if (tileWeHit.gameObject.GetComponent<Rigidbody2D>() != null)
+            GameObject tileWeHit = collider.gameObject;
+            if (tileWeHit.GetComponent<Rigidbody2D>() != null)
             {
-                gameObject.AddComponent<TeagueCappyPlayer>().possessed = tileWeHit.gameObject;
-                GetComponent<TeagueCappyPlayer>().playerState = Player.instance.gameObject;
-                GetComponent<Collider2D>().isTrigger = true;
-                transform.position = tileWeHit.transform.position + new Vector3(0, collision.collider.bounds.extents.y + collision.collider.offset.y, transform.position.z);
-                Physics2D.IgnoreCollision(collision.collider, collision.otherCollider, true);
+                Component[] removedTiles = tileWeHit.GetComponents<Tile>();
+                TeagueCappyPlayer cappyPlayer = tileWeHit.AddComponent<TeagueCappyPlayer>();
+                cappyPlayer.init();
+                cappyPlayer.possessed = removedTiles;
+                foreach (Tile t in removedTiles)
+                {
+                    Destroy(t);
+                }
+                cappyPlayer.playerState = tileThatThrewUs.gameObject;
+                cappyPlayer.cappyOffset = new Vector3(0, collider.bounds.extents.y + collider.offset.y, transform.position.z);
+                cappyPlayer.cappy = gameObject;
+                transform.position = tileWeHit.transform.position + cappyPlayer.cappyOffset;
+                Physics2D.IgnoreCollision(collider, GetComponent<Collider2D>(), true);
                 transform.parent = tileWeHit.transform;
-                GetComponent<TeagueCappyPlayer>().UpdatePlayer();
-                //Destroy(tileThatThrewUs.gameObject);
+                tileThatThrewUs.gameObject.SetActive(false);
+                cappyPlayer.UpdatePlayer();
+                cappyPlayer.health = cappyPlayer.playerState.GetComponent<Tile>().health;
                 Destroy(this);
             }
-            */
-            collision.gameObject.GetComponent<Tile>().takeDamage(this, 1);
-            collision.gameObject.GetComponent<Tile>().addForce((collision.transform.position - transform.position).normalized * 1500);
         }
     }
 

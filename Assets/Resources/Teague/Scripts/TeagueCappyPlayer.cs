@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class TeagueCappyPlayer : Player
 {
-    public GameObject possessed;
+    public Component[] possessed;
     public GameObject playerState;
-    public GameObject cappyPrefab;
+    public GameObject cappy;
+    public Vector3 cappyOffset;
 
     void Awake()
     {
         _instance = this;
         addTag(TileTags.Player);
+    }
+
+    public override void init()
+    {
+        base.init();
+        GetComponent<Collider2D>().isTrigger = false;
+        if (GetComponent<BoxCollider2D>() != null)
+        {
+            GetComponent<BoxCollider2D>().size = .98f * GetComponent<BoxCollider2D>().size;
+        }
     }
 
     void Update()
@@ -20,6 +31,8 @@ public class TeagueCappyPlayer : Player
         {
             return;
         }
+
+        cappy.transform.position = transform.position + cappyOffset;
 
         // Update our aim direction
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -40,49 +53,60 @@ public class TeagueCappyPlayer : Player
         // If we press space, we're unpossessing the object.
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            int numObjects = Physics2D.OverlapPointNonAlloc(possessed.transform.position + Vector3.up * 2, _maybeColliderResults);
+            int numObjects = Physics2D.OverlapPointNonAlloc(transform.position + Vector3.up * 2, _maybeColliderResults);
             bool instantiated = false;
-            GameObject newPlayer = null;
-            if (_maybeColliderResults.Length == 0)
+            if (_maybeColliderResults[0] == null)
             {
-                newPlayer = Instantiate(playerState, possessed.transform.position + Vector3.up * 2, Quaternion.identity, transform.parent.parent);
+                playerState.transform.position = transform.position + Vector3.up * 2;
+                playerState.SetActive(true);
                 instantiated = true;
             }
             else
             {
-                numObjects = Physics2D.OverlapPointNonAlloc(possessed.transform.position + Vector3.right * 2, _maybeColliderResults);
-                if (_maybeColliderResults.Length == 0)
+                numObjects = Physics2D.OverlapPointNonAlloc(transform.position + Vector3.right * 2, _maybeColliderResults);
+                if (_maybeColliderResults[0] == null)
                 {
-                    newPlayer = Instantiate(playerState, possessed.transform.position + Vector3.right * 2, Quaternion.identity, transform.parent.parent);
+                    playerState.transform.position = transform.position + Vector3.right * 2;
+                    playerState.SetActive(true);
                     instantiated = true;
                 }
                 else
                 {
-                    numObjects = Physics2D.OverlapPointNonAlloc(possessed.transform.position + Vector3.down * 2, _maybeColliderResults);
-                    if (_maybeColliderResults.Length == 0)
+                    numObjects = Physics2D.OverlapPointNonAlloc(transform.position + Vector3.down * 2, _maybeColliderResults);
+                    if (_maybeColliderResults[0] == null)
                     {
-                        newPlayer = Instantiate(playerState, possessed.transform.position + Vector3.down * 2, Quaternion.identity, transform.parent.parent);
+                        playerState.transform.position = transform.position + Vector3.down * 2;
+                        playerState.SetActive(true);
                         instantiated = true;
                     }
                     else
                     {
-                        numObjects = Physics2D.OverlapPointNonAlloc(possessed.transform.position + Vector3.left * 2, _maybeColliderResults);
-                        if (_maybeColliderResults.Length == 0)
+                        numObjects = Physics2D.OverlapPointNonAlloc(transform.position + Vector3.left * 4, _maybeColliderResults);
+                        if (_maybeColliderResults[0] == null)
                         {
-                            newPlayer = Instantiate(playerState, possessed.transform.position + Vector3.left * 2, Quaternion.identity, transform.parent.parent);
+                            playerState.transform.position = transform.position + Vector3.left * 4;
+                            playerState.SetActive(true);
                             instantiated = true;
                         }
                     }
                 }
             }
-            if (instantiated && newPlayer != null)
+            if (instantiated)
             {
-                Instantiate(cappyPrefab).GetComponent<Tile>().pickUp(newPlayer.GetComponent<Tile>());
-                Destroy(gameObject);
+                playerState.GetComponent<Player>().health = health;
+                playerState.transform.parent = transform.parent;
+                _instance = playerState.GetComponent<Player>();
+                cappy.transform.parent = transform.parent;
+                cappy.AddComponent<TeagueCappy>().pickUp(playerState.GetComponent<Tile>());
+                gameObject.SetActive(false);
             }
         }
-        transform.parent = possessed.transform;
         updateSpriteSorting();
+    }
+
+    private void OnDestroy()
+    {
+        
     }
 
     void FixedUpdate()
@@ -115,9 +139,7 @@ public class TeagueCappyPlayer : Player
         attemptToMoveDir.Normalize();
 
         // Finally, here's where we actually move.
-        possessed.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        possessed.GetComponent<Tile>().addForce(attemptToMoveDir * moveSpeed * 200);
-        
+        moveViaVelocity(attemptToMoveDir, moveSpeed, moveAcceleration);
     }
 
     public void UpdatePlayer()

@@ -25,10 +25,38 @@ public class EleanorStatueController : Tile
 
     public void Update()
     {
-
-        if (_cursedController == null)
+        Debug.Log(_pray);
+        
+        if (_pray)
         {
-            _cursedController = GameObject.Find("UtiCursed(Clone)").GetComponent<UtiCursedController>();
+            if (!_audioPlayed)
+            {
+                Audio.PlayOneShot(Aah);
+                _audioPlayed = true;
+            }
+            else
+            {
+                _timer -= Time.deltaTime;
+            }
+
+            if (_timer > 0)
+            {
+                PrayLight.color = new Color(1, 1, 1, Mathf.Lerp(PrayLight.color.a, 1, 0.2f));
+            }
+            else 
+            {
+                PrayLight.color = new Color(1,1,1, Mathf.Lerp(PrayLight.color.a, 0, 0.2f)); 
+            }
+
+            if (_timer <0 && PrayLight.color.a < 0.05f)
+            {
+                foreach (Tile enemy in PrayLightScript.Enemies)
+                {
+                    Debug.Log(enemy.tileName);
+                    enemy.takeDamage(this,10);
+                }
+                Destroy(gameObject);
+            } 
         }
 
         if (_tradeReady && Input.GetKeyDown(KeyCode.T))
@@ -56,45 +84,19 @@ public class EleanorStatueController : Tile
             }
 
             if (_timer > 0){
-            TradeLight.color = new Color(1,1,1, Mathf.Lerp(TradeLight.color.a, 1, 0.1f));  
+            TradeLight.color = new Color(1,1,1, Mathf.Lerp(TradeLight.color.a, 1, 0.2f));  
             }
             else 
             {
-                TradeLight.color = new Color(1,1,1, Mathf.Lerp(TradeLight.color.a, 0, 0.1f)); 
+                TradeLight.color = new Color(1,1,1, Mathf.Lerp(TradeLight.color.a, 0, 0.2f)); 
             }
             
             if (_timer <0 && TradeLight.color.a < 0.05f) Destroy(gameObject);
         }
-        if (_pray)
-        {          
-            if (!_audioPlayed)
-            {
-                Audio.PlayOneShot(Aah);
-                _audioPlayed = true;
-            }
-            else
-            {
-                _timer -= Time.deltaTime;
-            }
-
-            if (_timer > 0)
-            {
-                PrayLight.color = new Color(1, 1, 1, Mathf.Lerp(PrayLight.color.a, 1, 0.1f));
-            }
-            else 
-            {
-                PrayLight.color = new Color(1,1,1, Mathf.Lerp(PrayLight.color.a, 0, 0.1f)); 
-            }
-
-            if (_timer <0 && PrayLight.color.a < 0.05f)
-            {
-                foreach (Tile enemy in PrayLightScript.Enemies)
-                {
-                    Debug.Log(enemy.tileName);
-                    enemy.takeDamage(this,10);
-                }
-                Destroy(gameObject);
-            } 
+        
+        if (_cursedController == null)
+        {
+            _cursedController = GameObject.Find("UtiCursed(Clone)").GetComponent<UtiCursedController>();
         }
 
     }
@@ -104,7 +106,6 @@ public class EleanorStatueController : Tile
         if (!tilePickingUsUp.hasTag(TileTags.Player))
             return;
             _pray = true;
-        Debug.Log(_cursedController.cursed);
         if (_cursedController != null && _cursedController.cursed > 0)
         {
             _cursedController.cursed--;
